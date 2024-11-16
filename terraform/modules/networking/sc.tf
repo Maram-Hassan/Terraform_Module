@@ -28,13 +28,6 @@ resource "aws_security_group" "frontend_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Allow SSH (port 3001) from anywhere
-  ingress {
-    from_port   = 3001
-    to_port     = 3001
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
     # Allow outbound access to any address
   egress {
     from_port   = 0
@@ -57,7 +50,7 @@ resource "aws_security_group" "backend_sg" {
     from_port       = 8000
     to_port         = 8000
     protocol        = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups = [aws_security_group.frontend_sg.id]
   }
 # Allow SSH access only from the frontend security group
   ingress {

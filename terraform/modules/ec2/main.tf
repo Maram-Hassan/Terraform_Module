@@ -17,4 +17,11 @@ resource "aws_instance" "ec2_instance" {
     ]
 
   }
+
+   connection {
+      type        = "ssh"
+      user        = "ubuntu"  # The default user for Ubuntu AMIs; change if you're using a different AMI
+      private_key = "new-key"  # Path to the private key file
+      host        = self.public_ip  # Use the public IP of the instance to SSH into it
+    }
 }
