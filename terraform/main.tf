@@ -6,8 +6,9 @@ module "network" {
   vpc_name           = "my-vpc"
   public_subnet_cidr = "10.0.1.0/24"
   private_subnet_cidr = "10.0.2.0/24"
-  subnet_id     = module.network.private_subnet_id  # Public subnet for frontend
+  private_subnet_cidr2 = "10.0.3.0/24"
 
+  subnet_id     = module.network.private_subnet_id  # Public subnet for frontend
 }
 
 # Frontend EC2 instance in the public subnet

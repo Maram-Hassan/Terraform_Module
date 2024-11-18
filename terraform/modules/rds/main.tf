@@ -17,4 +17,8 @@ resource "aws_db_instance" "mysql" {
 }
 
 
-
+resource "aws_db_subnet_group" "mysql_subnet_group" {
+  name        = "mysql-subnet-group"
+  subnet_ids  = [module.network.private_subnet_id,module.Network.private_subnet_id2]  # Private subnets from networking module
+  description = "MySQL RDS subnet group for private subnets"
+}

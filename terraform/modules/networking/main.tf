@@ -28,6 +28,15 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
+# Private Subnet
+resource "aws_subnet" "private_subnet2" {
+  vpc_id     = aws_vpc.myvpc.id
+  cidr_block = var.private_subnet_cidr2
+
+  tags = {
+    Name = "private_subnet2"
+  }
+}
 
 # Internet Gateway
 resource "aws_internet_gateway" "igw" {
